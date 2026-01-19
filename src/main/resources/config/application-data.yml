@@ -1,0 +1,21 @@
+data:
+  menus:
+    - name: 我的任务
+      id: myFlowableTask
+      path: /flowable/task
+      icon: scheduleoutlined
+      seq: -1
+      refresh-on-tab-click: true
+      message-count-url: /admin/flowable/my/todoCount
+      perm-names: [ 任务管理 ]
+      perm-codes: [ myFlowableTask:manage ]
+
+    - id: flowable
+      pid: sys
+      name: 流程管理
+      path: /flowable
+      perm-names: [ 设计,部署,动态修改受理人,终止流程 ]
+      perm-codes: [ flowableModel:design,flowableModel:deploy,flowableTask:setAssignee,flowableInstance:close ]
+
+
+
