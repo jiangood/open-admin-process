@@ -3,8 +3,8 @@ package io.github.jiangood.as.modules.flowable.config;
 import io.github.jiangood.as.common.tools.SpringTool;
 import io.github.jiangood.as.modules.flowable.config.meta.ProcessListener;
 import io.github.jiangood.as.modules.flowable.config.meta.ProcessMeta;
-import io.github.jiangood.as.modules.flowable.service.ProcessMetaService;
 import io.github.jiangood.as.modules.flowable.core.FlowableEventType;
+import io.github.jiangood.as.modules.flowable.service.ProcessMetaService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.flowable.common.engine.api.delegate.event.FlowableEvent;
@@ -40,7 +40,7 @@ public class GlobalProcessListener implements FlowableEventListener {
         }
 
         FlowableEventType eventType = FlowableEventType.findByName(typeName);
-        if(eventType == null){
+        if (eventType == null) {
             return;
         }
 
@@ -49,12 +49,10 @@ public class GlobalProcessListener implements FlowableEventListener {
         String definitionKey = execution.getProcessDefinitionKey();
 
 
-
-
         log.info("流程事件 {} {}", definitionKey, event.getType());
 
         Map<String, Object> variables = execution.getVariables();
-       // String initiator = (String) variables.get("INITIATOR");
+        // String initiator = (String) variables.get("INITIATOR");
         String businessKey = execution.getBusinessKey();
         String initiator = execution.getStartUserId();
 
