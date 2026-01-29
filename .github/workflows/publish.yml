@@ -59,20 +59,3 @@ jobs:
 
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
-
-  npm-sync:
-    needs: npm
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: https://registry.npmjs.org
-      - name: 同步阿里云镜像仓库
-        run: |
-          npm install -g cnpm --registry=https://registry.npmmirror.com 
-          cnpm sync @jiangood/admin-spring-boot-starter
-
-
-
-
