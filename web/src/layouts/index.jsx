@@ -1,5 +1,5 @@
 import React from "react";
-import {Layouts} from "@jiangood/openadmin";
+import {Layouts} from "@jiangood/open-admin";
 
 export default class extends React.Component {
 

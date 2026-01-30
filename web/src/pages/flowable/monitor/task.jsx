@@ -1,4 +1,4 @@
-import {FieldUserSelect, HttpUtils, Page, ProTable} from "@jiangood/openadmin";
+import {FieldUserSelect, HttpUtils, Page, ProTable} from "@jiangood/open-admin";
 import {Button, Form, Modal} from "antd";
 import React from "react";
 

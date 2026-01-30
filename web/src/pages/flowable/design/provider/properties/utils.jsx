@@ -4,7 +4,7 @@ import {h} from "preact";
 import React from "react";
 import {useEffect, useRef} from "@bpmn-io/properties-panel/preact/hooks";
 import {ConfigProvider} from "antd";
-import {ThemeUtils} from "@jiangood/openadmin";
+import {ThemeUtils} from "@jiangood/open-admin";
 
 // 渲染React组件（bpmn properties-panel 只支持preact）
 export function renderReact(props, ReactComponent, moreProps) {

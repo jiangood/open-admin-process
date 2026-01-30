@@ -1,4 +1,4 @@
-import {StringUtils} from "@jiangood/openadmin";
+import {StringUtils} from "@jiangood/open-admin";
 
 
 export class ConditionExpressionUtils {

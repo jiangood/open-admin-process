@@ -1,5 +1,5 @@
 import React from "react";
-import {Gap, HttpUtils, Page, PageUtils, ProTable} from "@jiangood/openadmin";
+import {Gap, HttpUtils, Page, PageUtils, ProTable} from "@jiangood/open-admin";
 import {Card, Empty, Skeleton, Table} from "antd";
 
 export default class extends React.Component {

@@ -9,7 +9,7 @@ import './index.css'
 import customTranslate from "./customTranslate/customTranslate";
 import contextPad from "./contextPad";
 import {CloudUploadOutlined, SaveOutlined} from "@ant-design/icons";
-import {HttpUtils, MessageUtils, PageLoading, PageUtils, ProTable} from "@jiangood/openadmin";
+import {HttpUtils, MessageUtils, PageLoading, PageUtils, ProTable} from "@jiangood/open-admin";
 import 'bpmn-js/dist/assets/bpmn-js.css';
 import '@bpmn-io/properties-panel/assets/properties-panel.css';
 import {BpmnPropertiesPanelModule, BpmnPropertiesProviderModule} from 'bpmn-js-properties-panel';

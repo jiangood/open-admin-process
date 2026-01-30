@@ -1,6 +1,6 @@
 import {Button, Popconfirm, Space} from 'antd';
 import React from 'react';
-import {ButtonList, HttpUtils, Page, PageUtils, ProTable} from "@jiangood/openadmin";
+import {ButtonList, HttpUtils, Page, PageUtils, ProTable} from "@jiangood/open-admin";
 
 export default class extends React.Component {
 

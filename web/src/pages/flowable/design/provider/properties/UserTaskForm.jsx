@@ -3,7 +3,7 @@ import {
     FieldRemoteSelect,
     FieldRemoteSelectMultipleInline,
     StringUtils
-} from "@jiangood/openadmin";
+} from "@jiangood/open-admin";
 import React from "react";
 import {renderReact} from "./utils";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import {HttpUtils, ProTable} from "@jiangood/openadmin";
+import {HttpUtils, ProTable} from "@jiangood/open-admin";
 
 export default class extends React.Component {
 
