@@ -26,7 +26,7 @@
     "react-dom": "^19.0.0",
     "umi": "^4.0.0"
   },
-  "name": "@jiangood/admin-process-spring-boot-starter",
+  "name": "@jiangood/open-admin-process",
   "files": [
     "src/*",
     "!src/.umi",

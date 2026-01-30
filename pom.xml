@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.github.jiangood</groupId>
-    <artifactId>admin-process-spring-boot-starter</artifactId>
+    <artifactId>open-admin-process</artifactId>
     <version>${revision}</version>
     <name>Admin Process Spring Boot Starter</name>
     <description>流程引擎插件</description>
-    <url>https://github.com/jiangood/admin-process-spring-boot-starter</url>
+    <url>https://github.com/jiangood/open-admin-process</url>
     <licenses>
         <license/>
     </licenses>
@@ -24,7 +24,7 @@
         <connection/>
         <developerConnection/>
         <tag/>
-        <url>https://github.com/jiangood/admin-process-spring-boot-starter/tree/master</url>
+        <url>https://github.com/jiangood/open-admin-process/tree/master</url>
     </scm>
     <properties>
         <revision>1.0.6-SNAPSHOT</revision>
