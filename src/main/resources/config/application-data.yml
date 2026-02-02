@@ -13,9 +13,9 @@ data:
     - id: flowable
       pid: sys
       name: 流程管理
-      path: /flowable
+      path: /flowable/main
       seq: 10
-      perm-names: [ 设计,部署,动态修改受理人,终止流程 ]
+      perm-names: [ 设计,部署,设置受理人,终止流程 ]
       perm-codes: [ flowableModel:design,flowableModel:deploy,flowableTask:setAssignee,flowableInstance:close ]
 
 
