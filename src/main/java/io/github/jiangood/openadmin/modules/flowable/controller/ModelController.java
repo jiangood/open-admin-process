@@ -3,6 +3,7 @@ package io.github.jiangood.openadmin.modules.flowable.controller;
 import cn.hutool.core.lang.Dict;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.github.jiangood.openadmin.lang.dto.AjaxResult;
+import io.github.jiangood.openadmin.lang.dto.IdRequest;
 import io.github.jiangood.openadmin.lang.dto.antd.Option;
 import io.github.jiangood.openadmin.lang.PageTool;
 import io.github.jiangood.openadmin.lang.SpringTool;
@@ -19,6 +20,7 @@ import io.github.jiangood.openadmin.modules.system.entity.SysRole;
 import io.github.jiangood.openadmin.modules.system.entity.SysUser;
 import io.github.jiangood.openadmin.modules.system.service.SysRoleService;
 import io.github.jiangood.openadmin.modules.system.service.SysUserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.flowable.bpmn.model.BpmnModel;
@@ -109,8 +111,8 @@ public class ModelController {
 
     @PreAuthorize("hasAuthority('flowableModel:design')")
     @GetMapping("delete")
-    public AjaxResult delete(@RequestParam String id) {
-        repositoryService.deleteModel(id);
+    public AjaxResult delete(@Valid @RequestBody  IdRequest id) {
+        repositoryService.deleteModel(id.getId());
         return AjaxResult.ok().msg("删除模型成功");
     }
 
@@ -193,7 +195,7 @@ public class ModelController {
     @GetMapping("assigneeOptions")
     public AjaxResult assigneeOptions(String searchText) {
         Spec<SysUser> spec = Spec.of();
-        List<SysUser> userList = sysUserService.findAll(spec.orLike(searchText, "name", "account", "phone"), Sort.by("name"));
+        List<SysUser> userList = sysUserService.getAll(spec.orLike(searchText, "name", "account", "phone"), Sort.by("name"));
 
 
         List<Option> list = new ArrayList<>();
@@ -214,7 +216,7 @@ public class ModelController {
     public AjaxResult candidateGroupsOptions() {
         List<Option> list = new ArrayList<>();
 
-        List<SysRole> roleList = roleService.findAll(Sort.by("seq", "name"));
+        List<SysRole> roleList = roleService.getAll(Sort.by("seq", "name"));
 
         for (SysRole sysRole : roleList) {
             list.add(Option.of(sysRole.getId(), sysRole.getName()));
@@ -230,7 +232,7 @@ public class ModelController {
         Spec<SysUser> spec = Spec.of();
 
         spec.orLike(searchText, "name", "account", "phone");
-        List<SysUser> userList = sysUserService.findAll(spec, Sort.by("name"));
+        List<SysUser> userList = sysUserService.getAll(spec, Sort.by("name"));
 
         for (SysUser sysUser : userList) {
             list.add(Option.of(sysUser.getId(), sysUser.getName()));

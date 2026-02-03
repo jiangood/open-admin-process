@@ -47,7 +47,7 @@ export default class extends React.Component {
 
 
     handleDelete = row => {
-        HttpUtils.get('admin/flowable/model/delete', {id: row.id}).then(rs => {
+        HttpUtils.post('admin/flowable/model/delete', {id: row.id}).then(rs => {
             this.actionRef.current.reload();
         })
     }
