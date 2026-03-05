@@ -2,6 +2,7 @@ package io.github.jiangood.openadmin.modules.flowable.controller;
 
 import cn.hutool.core.lang.Dict;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import io.github.jiangood.openadmin.framework.perm.HasPermission;
 import io.github.jiangood.openadmin.lang.dto.AjaxResult;
 import io.github.jiangood.openadmin.lang.dto.IdRequest;
 import io.github.jiangood.openadmin.lang.dto.antd.Option;
@@ -118,7 +119,7 @@ public class ModelController {
 
     @PreAuthorize("hasAuthority('flowableModel:design')")
     @PostMapping("saveContent")
-    public AjaxResult save(@RequestBody ModelRequest param) throws Exception {
+    public AjaxResult save(@RequestBody ModelRequest param) {
         Assert.hasText(param.content(), "内容不能为空");
         repositoryService.addModelEditorSource(param.id(), param.content().getBytes(StandardCharsets.UTF_8));
         return AjaxResult.ok().msg("保存成功");
@@ -127,7 +128,7 @@ public class ModelController {
     @Log("部署流程模型")
     @PreAuthorize("hasAuthority('flowableModel:deploy')")
     @PostMapping("deploy")
-    public AjaxResult deploy(@RequestBody ModelRequest param) throws InvocationTargetException, IllegalAccessException, JsonProcessingException {
+    public AjaxResult deploy(@RequestBody ModelRequest param) {
         String xml = param.content();
         String id = param.id();
         Assert.hasText(xml, "内容不能为空");
@@ -200,8 +201,8 @@ public class ModelController {
 
         List<Option> list = new ArrayList<>();
 
-        list.add(Option.of("${INITIATOR}", "* 发起人"));
-        list.add(Option.of("${INITIATOR_DEPT_LEADER}", "* 部门领导"));
+        list.add(Option.of("${INITIATOR}", "发起人"));
+        list.add(Option.of("${INITIATOR_DEPT_LEADER}", "部门负责人"));
 
 
         for (SysUser sysUser : userList) {
