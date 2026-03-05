@@ -27,7 +27,7 @@
         <url>https://github.com/jiangood/open-admin-process/tree/master</url>
     </scm>
     <properties>
-        <revision>1.0.6-SNAPSHOT</revision>
+        <revision>1.1.1-SNAPSHOT</revision>
         <java.version>17</java.version>
         <compile.version>17</compile.version>
         <maven.compiler.source>17</maven.compiler.source>
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>io.github.jiangood</groupId>
             <artifactId>open-admin</artifactId>
-            <version>1.1.2-SNAPSHOT</version>
+            <version>1.1.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -50,30 +50,42 @@
 
     <profiles>
         <profile>
-            <id>release</id>
+            <id>publish</id>
             <build>
-                <resources>
-                    <resource>
-                        <directory>src/main/resources</directory>
-                        <excludes>
-                            <exclude>config/application-process.yml</exclude>
-                        </excludes>
-                    </resource>
-                </resources>
+
                 <plugins>
+
+                    <!-- publish to center -->
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.10.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <autoPublish>true</autoPublish>
+                        </configuration>
+                    </plugin>
+                    <!-- sign jar -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <configuration>
-                            <source>${compile.version}</source>
-                            <target>${compile.version}</target>
-                            <compilerArgument>-Xlint:unchecked</compilerArgument>
-                            <encoding>UTF-8</encoding>
-                            <excludes>
-                                <exclude>io/github/jiangood/openadmin/BootApplication.java</exclude>
-                                <exclude>io/github/jiangood/openadmin/modules/flowable/example/**</exclude>
-                            </excludes>
-                        </configuration>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.2.8</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <!--必须配置，用于 gpg 非交互式密码输入 -->
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
@@ -81,8 +93,30 @@
     </profiles>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>config/application-process.yml</exclude>
+                </excludes>
+            </resource>
+        </resources>
 
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${compile.version}</source>
+                    <target>${compile.version}</target>
+                    <compilerArgument>-Xlint:unchecked</compilerArgument>
+                    <encoding>UTF-8</encoding>
+                    <excludes>
+                        <exclude>io/github/jiangood/openadmin/BootApplication.java</exclude>
+                        <exclude>io/github/jiangood/openadmin/modules/flowable/example/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -99,16 +133,7 @@
 
 
 
-            <!-- publish to center -->
-            <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.10.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <autoPublish>true</autoPublish>
-                </configuration>
-            </plugin>
+
             <!-- Javadoc -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -144,28 +169,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- sign jar -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.2.8</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                        <configuration>
-                            <!--必须配置，用于 gpg 非交互式密码输入 -->
-                            <gpgArguments>
-                                <arg>--pinentry-mode</arg>
-                                <arg>loopback</arg>
-                            </gpgArguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+
 
             <!--打包时，为了批量修改版本 revision 变成真正的版本号，而不是占位符-->
             <plugin>
