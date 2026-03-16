@@ -11,12 +11,8 @@
 <dependency>
     <groupId>io.github.jiangood</groupId>
     <artifactId>open-admin-process</artifactId>
-    <version>1.0.3</version>
+    <version>版本号</version>
 </dependency>
 ```
 
 该库已发布于 [Maven Central](https://search.maven.org/artifact/io.github.jiangood/open-admin-process)。
-
-## 相关链接
-- [Maven Central](https://search.maven.org/artifact/io.github.jiangood/open-admin-process)
-- [GitHub](https://github.com/jiangood/open-admin-process)
