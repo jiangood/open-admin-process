@@ -37,7 +37,7 @@
         <dependency>
             <groupId>io.github.jiangood</groupId>
             <artifactId>open-admin</artifactId>
-            <version>1.2.2-SNAPSHOT</version>
+            <version>1.2.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
