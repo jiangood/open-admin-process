@@ -112,7 +112,7 @@
                     <compilerArgument>-Xlint:unchecked</compilerArgument>
                     <encoding>UTF-8</encoding>
                     <excludes>
-                        <exclude>io/github/jiangood/openadmin/BootApplication.java</exclude>
+                        <exclude>io/github/jiangood/openadmin/ProcessBootApplication.java</exclude>
                         <exclude>io/github/jiangood/openadmin/modules/flowable/example/**</exclude>
                     </excludes>
                 </configuration>
