@@ -35,4 +35,4 @@ build/
 /web/node_modules/
 /web/src/.umi/
 /web/pnpm-lock.yaml
-/logs/spring.log
+/logs/

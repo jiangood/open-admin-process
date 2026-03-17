@@ -174,7 +174,7 @@ public class ModelController {
 
             String label = remark == null ? beanName : remark;
             String key = "${" + beanName + "}";
-            options.add(Option.of(key, label));
+            options.add(new Option(key, label));
         }
 
         return AjaxResult.ok().data(options);
@@ -201,12 +201,12 @@ public class ModelController {
 
         List<Option> list = new ArrayList<>();
 
-        list.add(Option.of("${INITIATOR}", "发起人"));
-        list.add(Option.of("${INITIATOR_DEPT_LEADER}", "部门负责人"));
+        list.add(new Option("${INITIATOR}", "发起人"));
+        list.add(new Option("${INITIATOR_DEPT_LEADER}", "部门负责人"));
 
 
         for (SysUser sysUser : userList) {
-            list.add(Option.of(sysUser.getId(), sysUser.getName()));
+            list.add(new Option(sysUser.getId(), sysUser.getName()));
         }
 
 
@@ -220,7 +220,7 @@ public class ModelController {
         List<SysRole> roleList = roleService.getAll(Sort.by("seq", "name"));
 
         for (SysRole sysRole : roleList) {
-            list.add(Option.of(sysRole.getId(), sysRole.getName()));
+            list.add(new Option(sysRole.getId(), sysRole.getName()));
         }
 
 
@@ -236,7 +236,7 @@ public class ModelController {
         List<SysUser> userList = sysUserService.getAll(spec, Sort.by("name"));
 
         for (SysUser sysUser : userList) {
-            list.add(Option.of(sysUser.getId(), sysUser.getName()));
+            list.add(new Option(sysUser.getId(), sysUser.getName()));
         }
 
         return AjaxResult.ok().data(list);
