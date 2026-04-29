@@ -16,3 +16,4 @@
 ```
 
 该库已发布于 [Maven Central](https://search.maven.org/artifact/io.github.jiangood/open-admin-process)。
+![Maven Central](https://img.shields.io/maven-central/v/io.github.jiangood/open-admin-process)
