@@ -44,6 +44,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.awt.image.BufferedImage;
 import java.nio.charset.StandardCharsets;
+import java.text.MessageFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -100,7 +101,12 @@ public class ProcessService {
 
         if (title == null) {
             String day = DateFormatTool.formatDayCn(new Date());
-            title = user.getName() + day + "发起的【" + definition.getName() + "】";
+            title = MessageFormat.format("{0}({1}){2}发起的【{3}】(业务单号:{4})",
+                    user.getName(),
+                    user.getDeptName() != null ? user.getDeptName() : "未知部门",
+                    day,
+                    definition.getName(),
+                    bizKey);
         }
 
         long instanceCount = runtimeService.createProcessInstanceQuery().processInstanceBusinessKey(bizKey).active().count();
